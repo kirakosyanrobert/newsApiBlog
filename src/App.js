@@ -11,7 +11,7 @@ class App extends Component {
       return (
         <>
         <Header />
-        <div className="container" style={{paddingTop: '56px', paddingBottom: '120px'}}>
+        <div className="container page-wrapper" style={{paddingTop: '56px', paddingBottom: '120px'}}>
           <Route path="/" component={Home} />
         </div>
         <Footer />

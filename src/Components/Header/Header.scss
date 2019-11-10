@@ -1,0 +1,64 @@
+@import '../../index.scss';
+
+.header__wrapper {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+}
+
+.header__logo {
+    width: 50%;
+}
+
+.header__navigation {
+    width: 50%;
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;        
+    }
+
+    ul li {
+        padding: 5px 10px;
+        list-style: none;
+    }
+
+    ul li:hover {
+        a {
+            color: #4f6173;
+        }
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: #a5adb5;
+    }
+    
+}
+
+@media (max-width: 1200px) { 
+
+}
+
+@media (max-width: 992px) { 
+    .header__wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header__logo {
+        width: 100%;
+    }
+    
+    .header__navigation { 
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) { 
+
+}
+
+@media (max-width: 576px) {
+
+}

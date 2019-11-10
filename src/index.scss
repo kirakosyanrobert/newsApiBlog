@@ -1,0 +1,42 @@
+$colorDark: #4f6173;
+$colorLight: #ffffff;
+$colorGreen: #4abfb4;
+$colorGrey:  #a5adb5; 
+
+html{
+    height: 100%;
+  }
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #eeeeee;
+    color: #5d6577;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 1200px) { 
+    $padding: 25px 15px;
+}
+
+@media (max-width: 992px) { 
+}
+
+@media (max-width: 768px) { 
+}
+
+@media (max-width: 576px) {
+
+}
+
+
+
+
+
+
+
+

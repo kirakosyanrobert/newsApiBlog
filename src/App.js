@@ -10,11 +10,11 @@ class App extends Component {
   render() {
       return (
         <>
-        <Header />
-        <div className="container page-wrapper" style={{paddingTop: '56px', paddingBottom: '120px'}}>
-          <Route path="/" component={Home} />
-        </div>
-        <Footer />
+          <Header />
+          <div className="page-wrapper">
+            <Route path="/" component={Home} />
+          </div>
+          <Footer />
         </>
       );
   }

@@ -35,6 +35,7 @@ class Home extends Component {
                     <h1 className="my-4">
                         Page Heading
                         <small>Secondary Text</small>
+                        
                     </h1>
                     {
                         !loading

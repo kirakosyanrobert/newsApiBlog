@@ -11,6 +11,7 @@ class App extends Component {
       return (
         <>
           <Header />
+          <h1>Gagas from Petrovsk</h1>
           <div className="page-wrapper">
             <Route path="/" component={Home} />
           </div>

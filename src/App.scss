@@ -1,3 +1,44 @@
-.page-wrapper {
+@import './Styles//mixins';
+
+.page__wrapper {
     min-height: calc(100vh - 120px);
+    max-width: 1200px;
+    margin: 50px auto 0 ;
+    @include flex-mixin(row, space-between, flex-start, nowrap);
+}
+
+.page__content {
+    width: 70%;
+}
+
+.page__sidebar {
+    width: 25%;
+}
+
+
+
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+    .page__wrapper {
+        margin: 0;
+        @include flex-mixin(column-reverse, top, center, nowrap)
+    }
+
+    .page__content {
+        width: 100%;
+    }
+    
+    .page__sidebar {
+        width: 100%;
+    }
+    
+    
+}
+
+@media (max-width: 425px) {
+
 }

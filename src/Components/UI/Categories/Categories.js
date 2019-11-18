@@ -4,7 +4,7 @@ import './Categories.scss';
 class Categories extends Component {
     render() {
         return (
-          <h1>Search Element</h1>
+          <h1>Categories Element</h1>
         )
     }
 }

@@ -11,12 +11,13 @@ body {
     margin: 0;
     padding: 0;
     background: #eeeeee;
-    color: #5d6577;
+    color: $colorDark;
 }
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 @media (max-width: 1200px) { 

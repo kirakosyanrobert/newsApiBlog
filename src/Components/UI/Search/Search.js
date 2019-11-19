@@ -1,35 +1,43 @@
 import React, {useState} from 'react';
 import './Search.scss';
 import {connect} from 'react-redux';
-import {searchSubmit} from '../../../redux/actions/searchAction';
+import {queryAction} from '../../../redux/filters/filtersAction';
 
 const Search = (props) => {
-    const [value, setValue] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        props.searchSubmit(value);
-    }
+    const [value, setValue] = useState(props.query);
     return (
-        <form className="search__form" onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-group">
+        <div className="card my-4">
+            <h5 className="card-header">Search</h5>
+            <div className="card-body">
+            <div className="input-group">
                 <input type="text"
                     className="form-control"
-                    placeholder="What you search ?"
+                    placeholder="Search for..."
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                 />
+                <span className="input-group-btn">
+                    <button
+                        className="btn btn-secondary"
+                        type="button"
+                        onClick={() => props.changeQuery(value)}
+                     >
+                         Go!
+                    </button>
+                </span>
             </div>
-        </form>
+            </div>
+        </div>
+
     )
 }
 
 const mapStateToProps = state => ({
-    value: state.search.value
+    query: state.filters.query
 });
 
 const mapDispatchToProps = dispatch =>  ({
-    searchSubmit: (value) => dispatch(searchSubmit(value))
+    changeQuery: (query) => dispatch(queryAction(query))
 });
 
 

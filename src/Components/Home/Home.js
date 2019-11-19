@@ -1,68 +1,48 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Home.scss';
 import {connect} from 'react-redux';
 import Axios from '../../Axios';
 import Loader from '../UI/Loader/Loader';
-import Card from '../UI/Card/Card';
+import Posts from '../Posts/Posts';
 
 
-class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: [],
-            loading: null
-        }
-    }
+const Home = (props) => {
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    getPosts = () => {
-        this.setState({
-            loading: true
-        })
-        Axios.get(`everything?q=${this.props.query}`)
+    const getPosts = async() => {
+        setLoading(true); 
+        Axios.get(`?country=${props.country}&category=${props.category}&q=${props.query}`)
         .then(res => {
-            this.setState({
-                posts: res.data.articles,
-                loading: false
-            })
+            setPosts(res.data.articles);
+            setLoading(false); 
         })
         .catch(err => {
-            this.setState({
-                loading: false
-            })
+            setLoading(false); 
         })
     }
-    componentDidMount () {
-        this.getPosts();
-    }
+    
+    useEffect(() => {
+        getPosts();
+    }, [props.country, props.category, props.query])
 
-    componentDidUpdate(prevProps) {
-        if(prevProps.query !== this.props.query) {
-            this.getPosts();
-        }
-    }
-
-    render() {
-        let {posts, loading} = this.state;
-        return (
-            <div className="home__main">
-                {
-                    !loading
-                    ?
-                    posts.map((post, index) => {
-                        return <Card post={post} key={`post${index}`} />
-                    })
-                    :
-                    <Loader />
-                }
-            </div>
-        );
-    }
-
+    return (
+        <React.Fragment>
+            {
+                !loading
+                ?
+                <Posts posts={posts} />
+                :
+                <Loader />
+            }
+        </React.Fragment>
+    );
 }
 
 const mapStateToProps = state => ({
-    query: state.search.value
+    country: state.filters.country,
+    category: state.filters.category,
+    query: state.filters.query
 })
 
 

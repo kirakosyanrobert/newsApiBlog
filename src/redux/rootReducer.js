@@ -1,9 +1,9 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import search from './searchReducer';
+import filters from './filters/filtersReducer';
 
 const rootReducer = combineReducers({
-    search,
+    filters,
 })
 
 const composeEnhancers =

@@ -1,44 +1,47 @@
-import React, {Component} from 'react';
-import './Categories.scss';
+import React from 'react';
+import {connect} from 'react-redux';
+import {categoryAction} from '../../../redux/filters/filtersAction';
 
-class Categories extends Component {
-    render() {
-        return (
-            <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
+const Categories = (props) => {
+      return (
+        <div className="card my-4">
+          <h5 className="card-header">Categories</h5>
+          <div className="card-body">
+            <div className="row">
+              <div className="col-lg-6">
+                <ul className="list-unstyled mb-0">
                   <li>
-                    <a href="#">Web Design</a>
+                    <a role="button" onClick={() => props.changeCategory('business')}>Business</a>
                   </li>
                   <li>
-                    <a href="#">HTML</a>
+                    <a role="button" onClick={() => props.changeCategory('entertainment')}>Entertainment</a>
                   </li>
                   <li>
-                    <a href="#">Freebies</a>
+                    <a role="button" onClick={() => props.changeCategory('health')}>Health</a>
                   </li>
                 </ul>
               </div>
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
+              <div className="col-lg-6">
+                <ul className="list-unstyled mb-0">
                   <li>
-                    <a href="#">JavaScript</a>
+                    <a role="button" onClick={() => props.changeCategory('science')}>Science</a>
                   </li>
                   <li>
-                    <a href="#">CSS</a>
+                    <a role="button" onClick={() => props.changeCategory('sports')}>Sports</a>
                   </li>
                   <li>
-                    <a href="#">Tutorials</a>
+                    <a role="button" onClick={() => props.changeCategory('technology')}>Technology</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-        </div>
-        )
-    }
+      </div>
+      )
 }
 
-export default Categories;
+const mapDispatchToProps = dispatch => ({
+  changeCategory: category => dispatch(categoryAction(category))
+})
+
+export default connect(null, mapDispatchToProps)(Categories);

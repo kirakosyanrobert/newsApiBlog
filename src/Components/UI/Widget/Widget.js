@@ -1,17 +1,57 @@
-import React, {Component} from 'react';
-import './Widget.scss';
+import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import Axios from '../../../Axios';
 
-class Widget extends Component {
-    render() {
-        return (
-            <div className="card my-4">
-                <h5 className="card-header">Side Widget</h5>
-                <div className="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+const Widget = (props) =>  {
+    const [sources, setSource] = useState([]);
+    const getSource = async () => {
+        try {
+            const res = await Axios.get(`/sources?country=${props.country}`);
+            setSource(res.data.sources.splice(0, 5));
+        } catch (err) {
+            console.log(err.message);
+        }
+       
+    }
+
+    useEffect(() => {
+        getSource();
+    }, [props.country])
+
+    return (
+        <div className="card my-4">
+            <h5 className="card-header">Side Widget</h5>
+            <div className="card-body">
+                <div className="list-group">
+                    {sources.length 
+                        ?
+                            sources.map((source, index) => {
+                                return (
+                                        <a key={source.id + index} target="_blank"  href={source.url} 
+                                            className="list-group-item list-group-item-action"
+                                        >
+                                            <p className="mb-1">{source.description}</p>
+                                            <span className="badge badge-primary">
+                                                {source.category}
+                                            </span>
+                                        </a>
+                                        ) 
+                            })
+                        :
+                            null
+                    }
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default Widget;
+Widget.prototypes = {
+    country: PropTypes.string
+}
+
+const mapStateToProps = state => ({
+    country: state.filters.country,
+})
+export default connect(mapStateToProps)(Widget);

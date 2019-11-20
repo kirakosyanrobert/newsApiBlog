@@ -39,6 +39,34 @@ const Home = (props) => {
     );
 }
 
+    render() {
+        let {posts, loading} = this.state
+        return (
+           <div className="row">
+                <div className="col-md-8">
+                    <h1 className="my-4">
+                        Page Heading
+                        <small>Secondary Text</small>
+                        
+                    </h1>
+                    {
+                        !loading
+                        ?
+                        posts.map((post, index) => {
+                            return <Card post={post} key={`post${index}`} />
+                        })
+                        :
+                        'Loading...'
+                    }
+                </div>
+                <div className="col-md-4">
+                    <Search />
+                </div>
+           </div>
+        );
+    }
+
+
 Home.propTypes = {
     country: PropTypes.string,
     category: PropTypes.string,

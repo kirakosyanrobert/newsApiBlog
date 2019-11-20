@@ -1,3 +1,11 @@
 body {
     padding-top: 56px;
 }
+
+a[role=button] {
+    cursor: pointer;
+}
+
+.nav-item .nav-link.isActive {
+    color: #ffffff;
+}

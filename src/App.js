@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import './App.scss';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
@@ -18,9 +17,9 @@ const App = () => {
                   <Route path="/" exact component={Home} />
               </div>
               <div className="col-md-4">
-                <Search />
-                <Categories />
-                <Widget />
+                  <Search />
+                  <Categories />
+                  <Widget />
               </div>
             </div>
           </div>

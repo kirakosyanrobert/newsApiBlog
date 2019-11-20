@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
-import './Card.scss';
 
 const Card = ({post}) => {
     return (
@@ -27,12 +26,12 @@ Card.propTypes = {
     post: propTypes.exact({
         author: propTypes.string,
         content: propTypes.string,
-        description: propTypes.string.isRequired,
+        description: propTypes.string,
         publishedAt: propTypes.string,
         source: propTypes.object,
         title: propTypes.string.isRequired,
         url: propTypes.string,
-        urlToImage: propTypes.string.isRequired,
+        urlToImage: propTypes.string,
     }), 
 }
 

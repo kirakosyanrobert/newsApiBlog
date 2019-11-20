@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import './Home.scss';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Axios from '../../Axios';
 import Loader from '../UI/Loader/Loader';
-import Posts from '../Posts/Posts';
+import Posts from '../UI/Posts/Posts';
 
 
 const Home = (props) => {
@@ -12,7 +12,7 @@ const Home = (props) => {
 
     const getPosts = async() => {
         setLoading(true); 
-        Axios.get(`?country=${props.country}&category=${props.category}&q=${props.query}`)
+        Axios.get(`/top-headlines?country=${props.country}&category=${props.category}&q=${props.query}`)
         .then(res => {
             setPosts(res.data.articles);
             setLoading(false); 
@@ -37,6 +37,12 @@ const Home = (props) => {
             }
         </React.Fragment>
     );
+}
+
+Home.propTypes = {
+    country: PropTypes.string,
+    category: PropTypes.string,
+    query: PropTypes.string
 }
 
 const mapStateToProps = state => ({

@@ -1,5 +1,6 @@
 import React from 'react';
-import './Header.scss';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {countryAction} from '../../redux/filters/filtersAction';
 
@@ -8,7 +9,7 @@ const Header = (props) => {
             <header>
                <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                     <div className="container">
-                        <a className="navbar-brand" href="#">News API Blog</a>
+                        <Link className="navbar-brand" to="/">News API Blog</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -16,13 +17,31 @@ const Header = (props) => {
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link" role="button" href="#" onClick={() => props.changeCountry('ru')}>Russia</a>
+                                    <a
+                                        role="button" 
+                                        className={props.country === 'ru' ? 'nav-link isActive' : 'nav-link'}
+                                        onClick={() => props.changeCountry('ru')}
+                                    >
+                                        Russia
+                                    </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" role="button" href="#" onClick={() => props.changeCountry('jp')}>Japan</a>
+                                    <a
+                                        role="button" 
+                                        className={props.country === 'us' ? 'nav-link isActive' : 'nav-link'}
+                                        onClick={() => props.changeCountry('us')}
+                                    >
+                                        USA
+                                    </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" role="button" href="#" onClick={() => props.changeCountry('it')}>Italy</a>
+                                    <a
+                                        role="button" 
+                                        className={props.country === 'it' ? 'nav-link isActive' : 'nav-link'}
+                                        onClick={() => props.changeCountry('it')}
+                                    >
+                                        Italy
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -32,6 +51,10 @@ const Header = (props) => {
             </header>
         )
     }
+
+Header.propTypes = {
+    country: PropTypes.string
+}
 
 const mapStateToProps = state => ({
     country: state.filters.country

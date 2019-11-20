@@ -1,9 +1,9 @@
 import React from 'react';
-import './Posts.scss'
-import Card from '../UI/Card/Card';
+import PropTypes from 'prop-types';
+import Card from '../Card/Card';
 
 
-export default ({posts}) => {
+const Posts = ({posts}) => {
     if(!posts.length) {
        return <h1>There Are No Posts Found</h1>
     }
@@ -11,3 +11,9 @@ export default ({posts}) => {
                 return <Card post={post} key={`post${index}`} />
             })
 }
+
+Posts.propTypes = {
+    posts: PropTypes.arrayOf(PropTypes.object)
+}
+
+export default Posts;

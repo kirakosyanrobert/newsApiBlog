@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Search.scss';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {queryAction} from '../../../redux/filters/filtersAction';
 
@@ -30,6 +30,10 @@ const Search = (props) => {
         </div>
 
     )
+}
+
+Search.propTypes = {
+    query: PropTypes.string
 }
 
 const mapStateToProps = state => ({

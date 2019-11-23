@@ -6,6 +6,7 @@ import Home from './Components/Home/Home';
 import Search from './Components/UI/Search/Search';
 import Categories from './Components/UI/Categories/Categories'
 import Widget from './Components/UI/Widget/Widget';
+import Crypto from './Components/Crypto/Crypto';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                   <Route path="/" exact component={Home} />
               </div>
               <div className="col-md-4">
+                  <Crypto />
                   <Search />
                   <Categories />
                   <Widget />
